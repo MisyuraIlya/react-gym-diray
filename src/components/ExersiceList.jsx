@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Exercise from './ProgramItem';
 import {Grid,Header,Segment,Table} from 'semantic-ui-react'
 
-const exersiceList = ({exercises,title}) => {
+const ExersiceList = ({exercises,title}) => {
+
+
+
+
+
     return (
         <Grid columns={3} divided>   
         <Grid.Row stretched>   
@@ -31,6 +36,7 @@ const exersiceList = ({exercises,title}) => {
                                         )}  
                                 </Table.Body>
                                 </Table>
+      
                             </Grid.Column>
                             </Grid>
                         </Grid.Column>
@@ -47,4 +53,4 @@ const exersiceList = ({exercises,title}) => {
     );
 };
 
-export default exersiceList;
+export default ExersiceList;
