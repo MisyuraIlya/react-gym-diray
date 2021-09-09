@@ -9,12 +9,7 @@ const ExersiceList = ({exercises,title}) => {
 
 
     return (
-        <Grid columns={3} divided>   
-        <Grid.Row stretched>   
-            <Grid.Column>
-            </Grid.Column>
-                <Grid.Column>
-                    <Segment>
+
                         <Grid.Row>
                         <Grid.Column>
                             <Header as='h1'>{title}</Header>
@@ -41,12 +36,7 @@ const ExersiceList = ({exercises,title}) => {
                             </Grid>
                         </Grid.Column>
                         </Grid.Row>
-                    </Segment>
-                </Grid.Column>
-                <Grid.Column>
-                </Grid.Column>
-        </Grid.Row>
-    </Grid>
+
             
 
         

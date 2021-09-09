@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import './App.css';
 import ExersiceList from './components/ExersiceList';
-import { Input,Button } from 'semantic-ui-react'
+import { Input,Button,Grid,Segment } from 'semantic-ui-react'
+import PostForm from './components/PostForm';
 
 function App() {
   const [exercises , setExercises] = useState( [
@@ -22,16 +23,12 @@ function App() {
   // ])
 
 
-  const [exercise,setExercise] = useState({name:'',sets:'',reps:''})
 
 
-  
-  const addProgram = (e) => {  
-      e.preventDefault()  
-      setExercises([...exercises,{...exercise, id: Date.now()}])
-      setExercise({name:'',sets:'',reps:''})
+    const createExercise = (newExercise) => {
+      setExercises([...exercises,newExercise])
+    }
 
-  }
 
 
   
@@ -39,39 +36,27 @@ function App() {
 
   
   return (
-    <div className="App">
-        <ExersiceList exercises={exercises} title="Day A"/>
-        {/* <ExersiceList exercises={exercises2} title="Day B"/>
-        <ExersiceList exercises={exercises3} title="Day C"/> */}
+    <Grid columns={3} >   
+    <Grid.Row stretched>   
+          <Grid.Column>
+            </Grid.Column>
+                <Grid.Column>
+                    <Segment>
 
-        <form>
-              <div>
-                <Input icon='users' iconPosition='left' 
-                    value={exercise.name}
-                    onChange={e => setExercise({...exercise, name: e.target.value})}
-                    type="text" 
-                    placeholder="Названия упражнения"
-                    />
-              </div>
-              <div>
-                <Input icon='users' iconPosition='left' 
-                    value={exercise.sets}
-                    onChange={e => setExercise({...exercise, sets: e.target.value})}
-                    type="text" 
-                    placeholder="Сколько сетов"
-                    />  
-              </div>
-              <div>
-                  <Input icon='users' iconPosition='left'  
-                    value={exercise.reps}
-                    onChange={e => setExercise({...exercise, reps: e.target.value})}
-                    type="text" 
-                    placeholder="Сколько повторов"
-                    />
-              </div>      
-               <Button positive onClick={addProgram}>Добавить упражнения</Button>
-          </form>
-    </div>
+                  <ExersiceList exercises={exercises} title="Day A"/>
+                  {/* <ExersiceList exercises={exercises2} title="Day B"/>
+                  <ExersiceList exercises={exercises3} title="Day C"/> */}
+
+                  <div style={{display:'flex',justifyContent:'center'}}>
+                        <PostForm create={createExercise} />
+                        </div>
+                        </Segment>
+                    </Grid.Column>
+                  <Grid.Column>
+                </Grid.Column>
+        </Grid.Row>
+    </Grid>
+            
   );
 }
 
