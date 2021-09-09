@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import ExersiceList from './components/ExersiceList';
-import { Input,Button,Grid,Segment } from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
 import PostForm from './components/PostForm';
 
 function App() {
-  const [exercises , setExercises] = useState( [
-    {id:1,name:"Жим лежа", sets:"4", reps:"12-6"},
-    {id:2,name:"Брусья", sets:"4", reps:"12-6"},
-    {id:3,name:"Бабочка", sets:"4", reps:"12-6"}
+  const [exercises, setExercises] = useState([
+    { id: 1, name: "Жим лежа", sets: "4", reps: "12-6" },
+    { id: 2, name: "Брусья", sets: "4", reps: "12-6" },
+    { id: 3, name: "Бабочка", sets: "4", reps: "12-6" }
   ])
   // const [exercises2 , setExercises2] = useState( [
   //   {id:1,name:"Становая", sets:"4", reps:"12-6"},
@@ -22,41 +22,36 @@ function App() {
   //   {id:3,name:"Икры", sets:"4", reps:"12-6"}
   // ])
 
+  const createExercise = (newExercise) => {
+    setExercises([...exercises, newExercise])
+  }
 
-
-
-    const createExercise = (newExercise) => {
-      setExercises([...exercises,newExercise])
-    }
-
-
-
-  
-
-
-  
   return (
-    <Grid columns={3} >   
-    <Grid.Row stretched>   
-          <Grid.Column>
-            </Grid.Column>
-                <Grid.Column>
-                    <Segment>
+    <Grid columns={3} >
+      <Grid.Row stretched>
+        <Grid.Column>
+        </Grid.Column>
+        <Grid.Column>
+          <Segment>
 
-                  <ExersiceList exercises={exercises} title="Day A"/>
-                  {/* <ExersiceList exercises={exercises2} title="Day B"/>
-                  <ExersiceList exercises={exercises3} title="Day C"/> */}
 
-                  <div style={{display:'flex',justifyContent:'center'}}>
-                        <PostForm create={createExercise} />
-                        </div>
-                        </Segment>
-                    </Grid.Column>
-                  <Grid.Column>
-                </Grid.Column>
-        </Grid.Row>
+
+            <ExersiceList exercises={exercises} title="Day A" />
+
+
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <PostForm create={createExercise} />
+            </div>
+
+
+
+          </Segment>
+        </Grid.Column>
+        <Grid.Column>
+        </Grid.Column>
+      </Grid.Row>
     </Grid>
-            
+
   );
 }
 
