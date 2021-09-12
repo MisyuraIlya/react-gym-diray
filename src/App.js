@@ -1,56 +1,45 @@
-import React, { useState } from 'react';
+//Global
+import React from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+//Local
 import './App.css';
-import ExersiceList from './components/ExersiceList';
-import { Grid, Segment } from 'semantic-ui-react'
-import PostForm from './components/PostForm';
+import Program from './pages/Program';
+import { ROUTES } from './lib/enums';
+import Home from './pages/Home';
 
 function App() {
-  const [exercises, setExercises] = useState([
-    { id: 1, name: "Жим лежа", sets: "4", reps: "12-6" },
-    { id: 2, name: "Брусья", sets: "4", reps: "12-6" },
-    { id: 3, name: "Бабочка", sets: "4", reps: "12-6" }
-  ])
-  // const [exercises2 , setExercises2] = useState( [
-  //   {id:1,name:"Становая", sets:"4", reps:"12-6"},
-  //   {id:2,name:"Шраги", sets:"4", reps:"12-6"},
-  //   {id:3,name:"Римский", sets:"4", reps:"12-6"}
-  // ])
 
-  // const [exercises3 , setExercises3] = useState( [
-  //   {id:1,name:"Присед", sets:"4", reps:"12-6"},
-  //   {id:2,name:"Жим ногами", sets:"4", reps:"12-6"},
-  //   {id:3,name:"Икры", sets:"4", reps:"12-6"}
-  // ])
-
-  const createExercise = (newExercise) => {
-    setExercises([...exercises, newExercise])
-  }
 
   return (
-    <Grid columns={3} >
-      <Grid.Row stretched>
-        <Grid.Column>
-        </Grid.Column>
-        <Grid.Column>
-          <Segment>
 
+    <BrowserRouter>
+      <Switch>
 
+        <Route exact path={ROUTES.HOME.path}>
+          <Home/>
+        </Route>
 
-            <ExersiceList exercises={exercises} title="Day A" />
+        <Route exact path={ROUTES.PROGRAM.path}>
+          <Program />
+        </Route>
 
+        <Route exact path={ROUTES.DIRAY.path}>
+          {/* DIARY */}
+        </Route>
 
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <PostForm create={createExercise} />
-            </div>
+        <Route exact path={ROUTES.FOOD.path}>
+          {/* FOOD */}
+        </Route>
 
+        <Route path='/error'>
+          {/* <Error /> */}
+        </Route>
 
+        <Redirect to='/error' />
 
-          </Segment>
-        </Grid.Column>
-        <Grid.Column>
-        </Grid.Column>
-      </Grid.Row>
-    </Grid>
+      </Switch>
+    </BrowserRouter>
 
   );
 }
