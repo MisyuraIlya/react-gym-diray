@@ -1,12 +1,11 @@
 //GLOBAL
 import React, { useState } from 'react';
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid, Segment, Container,Header,Icon,Image,Divider  } from 'semantic-ui-react'
+
 
 //Local
 import PostForm from '../components/PostForm';
-import SideBar from '../components/SideBar';
 import ExersiceList from '../components/ExersiceList';
-
 
 const Program = () => {
 
@@ -23,32 +22,202 @@ const Program = () => {
 
 
     return (
-        <div>
-            <SideBar />
-            <Grid columns={3} >
-                <Grid.Row stretched>
-                    <Grid.Column>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Segment>
+        <div >
+            <Container>
+                <Segment>
+                    <div>
+                        <Header as='h2' icon textAlign='center'>
+                            <Icon name='users' circular />
+                            <Header.Content>Power Lifting</Header.Content>
+                        </Header>
+                        <Image
+                            centered
+                            size='large'
+                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
+                        />
+                    </div>
+                    <Divider />
+                    <Container>
+                        <Grid columns={2} >
+                            <Grid.Row stretched>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+            </Container>
 
 
 
-                            <ExersiceList exercises={exercises} title="Day A" />
+            <Container>
+                <Segment>
+                    <div>
+                        <Header as='h2' icon textAlign='center'>
+                            <Icon name='users' circular />
+                            <Header.Content>Power Lifting</Header.Content>
+                        </Header>
+                        <Image
+                            centered
+                            size='large'
+                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
+                        />
+                    </div>
+                    <Divider />
+                    <Container>
+                        <Grid columns={2} >
+                            <Grid.Row stretched>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+            </Container>
 
 
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <PostForm create={createExercise} />
-                            </div>
 
+            <Container>
+                <Segment>
+                    <div>
+                        <Header as='h2' icon textAlign='center'>
+                            <Icon name='users' circular />
+                            <Header.Content>Power Lifting</Header.Content>
+                        </Header>
+                        <Image
+                            centered
+                            size='large'
+                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
+                        />
+                    </div>
+                    <Divider />
+                    <Container>
+                        <Grid columns={2} >
+                            <Grid.Row stretched>
 
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
 
-                        </Segment>
-                    </Grid.Column>
-                    <Grid.Column>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                                <Grid.Column>
+                                    <Segment>
+                                        <ExersiceList exercises={exercises} title="Day A" />
+                                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                            <PostForm create={createExercise} />
+                                        </div>
+                                    </Segment>
+
+                                </Grid.Column>
+
+                            </Grid.Row>
+                        </Grid>
+                    </Container>
+                </Segment>
+            </Container>
         </div>
     );
 };
