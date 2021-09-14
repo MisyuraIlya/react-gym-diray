@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Icon, Image, Modal, Form } from 'semantic-ui-react'
-import SplitProgram from './SplitProgram';
+
 
 
 const options = [
@@ -9,10 +9,11 @@ const options = [
     { key: 'o', text: 'Fitess', value: 'fitness' },
   ]
 
-
-const CreateProgram = () => {
+  
+const ProgramModal = () => {
 
     const [open, setOpen] = React.useState(false)
+
 
     return (
         <Modal
@@ -24,7 +25,7 @@ const CreateProgram = () => {
             <Modal.Header>Profile Picture</Modal.Header>
             <Modal.Content image scrolling>
                 <Image size='medium' src='/images/wireframe/image.png' wrapped />
-                
+
                 <Modal.Description>
                     <p>
                         This is an example of expanded content that will cause the modal's
@@ -32,22 +33,22 @@ const CreateProgram = () => {
                     </p>
 
                     <Form>
-        <Form.Group widths='equal'>
-          <Form.Input fluid label='Program Name' placeholder='Program Name' />
-          <Form.Select
-            fluid
-            label='Training'
-            options={options}
-            placeholder='Training'
-          />
-        </Form.Group>
+                        <Form.Group widths='equal'>
+                            <Form.Input fluid label='Program Name' placeholder='Program Name' />
+                            <Form.Select
+                                fluid
+                                label='Training'
+                                options={options}
+                                placeholder='Training'
+                            />
+                        </Form.Group>
 
-        <Form.TextArea label='About the program' placeholder='Description...' />
-      </Form>
+                        <Form.TextArea label='About the program' placeholder='Description...' />
+                    </Form>
 
 
                 </Modal.Description>
-                
+
             </Modal.Content>
             <Modal.Actions>
                 <Button onClick={() => setOpen(false)} positive>
@@ -58,4 +59,4 @@ const CreateProgram = () => {
     );
 };
 
-export default CreateProgram;
+export default ProgramModal;
