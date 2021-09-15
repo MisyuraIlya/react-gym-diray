@@ -5,6 +5,7 @@ import { Grid, Segment, Container, Header, Icon, Image, Divider, Sidebar, Menu, 
 //Local
 import SplitProgram from '../components/program/SplitProgram';
 import CreateProgram from '../components/program/CreateProgram';
+import MyPagination from '../components/MyPagination';
 
 const Program = () => {
     return (
@@ -82,15 +83,7 @@ const Program = () => {
                             </Segment>
                         </div>
                     </Container>
-                    <Pagination style={{ display: 'flex', justifyContent: 'center' }}
-                        boundaryRange={0}
-                        defaultActivePage={1}
-                        ellipsisItem={null}
-                        firstItem={null}
-                        lastItem={null}
-                        siblingRange={1}
-                        totalPages={10}
-                    />
+                    <MyPagination/>
                 </Segment>
             </Container>
         </div>

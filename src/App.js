@@ -19,6 +19,7 @@ import {
   Image,
 } from 'semantic-ui-react'
 import Navbar from './components/Navbar';
+import Diray from './pages/Diray';
 
 
 
@@ -137,7 +138,7 @@ function App() {
           </Route>
 
           <Route exact path={ROUTES.DIRAY.path}>
-            {/* DIARY */}
+            <Diray/>
           </Route>
 
           <Route exact path={ROUTES.FOOD.path}>

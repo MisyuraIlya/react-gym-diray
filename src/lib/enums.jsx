@@ -1,7 +1,7 @@
 export const ROUTES = {
     HOME: { path: '/', name: 'Homy page!' },
     PROGRAM: { path: '/program', name: 'Program' },
-    DIRAY: { path: '/history', name: 'History' },
+    DIRAY: { path: '/diary', name: 'Diary' },
     FOOD: { path: '/history', name: 'History' },
   };
   
