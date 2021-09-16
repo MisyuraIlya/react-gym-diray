@@ -7,7 +7,7 @@ import './App.css';
 import Program from './pages/Program';
 import { ROUTES } from './lib/enums';
 import Home from './pages/Home';
-
+import Train from './pages/Train';
 
 import {
   Button,
@@ -133,6 +133,10 @@ function App() {
             <Home />
           </Route>
 
+          <Route exact path={ROUTES.TRAIN.path}>
+            <Train/>
+          </Route>
+
           <Route exact path={ROUTES.PROGRAM.path}>
             <Program />
           </Route>
@@ -140,6 +144,9 @@ function App() {
           <Route exact path={ROUTES.DIRAY.path}>
             <Diray/>
           </Route>
+
+          
+
 
           <Route exact path={ROUTES.FOOD.path}>
             {/* FOOD */}
@@ -149,6 +156,7 @@ function App() {
             {/* <Error /> */}
           </Route>
 
+          
           <Redirect to='/error' />
 
         </Switch>
