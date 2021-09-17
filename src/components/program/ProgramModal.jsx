@@ -20,7 +20,7 @@ const ProgramModal = () => {
             open={open}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
-            trigger={<Button>Scrolling Content Modal</Button>}
+            trigger={<Button primary>Creating program</Button>}
         >
             <Modal.Header>Profile Picture</Modal.Header>
             <Modal.Content image scrolling>
@@ -51,7 +51,7 @@ const ProgramModal = () => {
 
             </Modal.Content>
             <Modal.Actions>
-                <Button onClick={() => setOpen(false)} positive>
+                <Button onClick={() => setOpen(false)} positive> 
                     Add <Icon name='chevron right' />
                 </Button>
             </Modal.Actions>

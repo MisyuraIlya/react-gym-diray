@@ -42,7 +42,10 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 0}>
                     <OldProgram />
-                    <Button primary>Start Train</Button>
+                    <Button primary onClick={this.handleItemClick,(e) => {
+              e.preventDefault();
+              window.location.href='http://localhost:3000/train';
+              }}>Start Train</Button>
                 </Accordion.Content>
 
                 <Accordion.Title
@@ -55,7 +58,10 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 1}>
                     <OldProgram />
-                    <Button primary>Start Train</Button>
+                    <Button primary onClick={this.handleItemClick,(e) => {
+              e.preventDefault();
+              window.location.href='http://localhost:3000/train';
+              }}>Start Train</Button>
                 </Accordion.Content>
 
                 <Accordion.Title
@@ -68,7 +74,10 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 2}>
                     <OldProgram />
-                    <Button primary>Start Train</Button>
+                    <Button primary onClick={this.handleItemClick,(e) => {
+              e.preventDefault();
+              window.location.href='http://localhost:3000/train';
+              }}>Start Train</Button>
                 </Accordion.Content>
             </Accordion>
                 </Grid.Column>

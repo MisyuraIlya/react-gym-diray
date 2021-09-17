@@ -11,6 +11,8 @@ import Train from './pages/Train';
 
 import {
   Button,
+  Container,
+  Dropdown,
   Header,
   Icon,
   Menu,
@@ -18,7 +20,6 @@ import {
   Sidebar,
   Image,
 } from 'semantic-ui-react'
-import Navbar from './components/Navbar';
 import Diray from './pages/Diray';
 
 
@@ -37,19 +38,29 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
     visible={visible}
     width='thin'
   >
-    <Menu.Item >
-      <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-          Project Name
+    <Menu.Item style={{display:'flex', justifyContent:'center'}} >
+      <div style={{display:'flex', justifyContent:'center'}}>
+      <Image size='mini' src='/logo.png'  />
+      </div>
       </Menu.Item>
-    <Menu.Item as='a'>
-      <Icon name='home' />
+    <Menu.Item as='a' onClick={(e) => {
+              e.preventDefault();
+              window.location.href='http://localhost:3000/';
+              }}>
+      <Icon name='home'  />
       Home
     </Menu.Item>
-    <Menu.Item as='a'>
+    <Menu.Item as='a' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='http://localhost:3000/program';
+        }}>
       <Icon name='gamepad' />
       Program
     </Menu.Item>
-    <Menu.Item as='a'>
+    <Menu.Item as='a' onClick={(e) => {
+        e.preventDefault();
+        window.location.href='http://localhost:3000/diray';
+        }}>
       <Icon name='camera' />
       Diray
     </Menu.Item>
@@ -112,15 +123,35 @@ function App() {
 
       <Sidebar.Pusher dimmed={dimmed && visible}>
 
-        <Navbar />
-        <Button
-          onClick={() =>
+      <Menu inverted attached='top' borderless>
+          <Menu.Item icon="align justify"           onClick={() =>
             dispatch({ type: 'CHANGE_ANIMATION', animation: 'push' })
-          }
-        >
+          }></Menu.Item>
+        <Container>
+        <Menu.Item as='a' header>
+          <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
+        </Menu.Item>
+        <Menu.Item as='a'>Home</Menu.Item>
 
-          Push
-        </Button>
+        <Dropdown item simple text='Dropdown'>
+          <Dropdown.Menu>
+            <Dropdown.Item>List Item</Dropdown.Item>
+            <Dropdown.Item>List Item</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Header>Header Item</Dropdown.Header>
+            <Dropdown.Item>
+              <i className='dropdown icon' />
+              <span className='text'>Submenu</span>
+              <Dropdown.Menu>
+                <Dropdown.Item>List Item</Dropdown.Item>
+                <Dropdown.Item>List Item</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown.Item>
+            <Dropdown.Item>List Item</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </Container>
+      </Menu>
       </Sidebar.Pusher>
 
 
