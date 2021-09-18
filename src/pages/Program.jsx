@@ -1,93 +1,18 @@
-//GLOBAL
-import React, { useState } from 'react';
-import { Grid, Segment, Container, Header, Icon, Image, Divider, Sidebar, Menu, Button, Checkbox, Modal, Pagination } from 'semantic-ui-react'
 
-//Local
-import SplitProgram from '../components/program/SplitProgram';
-import CreateProgram from '../components/program/CreateProgram';
-import MyPagination from '../components/MyPagination';
 
-const Program = () => {
-    return (
-        <div >
-            <Container>
-                <Segment>
-                <Header as='h1' style={{display:'flex', justifyContent:'center'}}>Program Editor</Header>
-                    <Container>
-                        <div>
-                            <CreateProgram />
-                            <Segment>
-                                <Segment basic>
-                                    <div>
-                                        <Modal
-                                            trigger={<Button positive >Edit</Button>}
-                                            header='Program Editor'
-                                            content={<SplitProgram />}
-                                            actions={['Close', { key: 'done', content: 'Done', positive: true }]}
-                                        />
-                                        <Header as='h2' icon textAlign='center'>
-                                            <Icon name='users' circular />
-                                            <Header.Content>Power Lifting</Header.Content>
-                                        </Header>
-                                        <Image
-                                            centered
-                                            size='large'
-                                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
-                                        />
-                                    </div>
-                                </Segment>
-                            </Segment>
+import React, { Component } from 'react'
+import { Input, Menu, Segment,Container,Tab } from 'semantic-ui-react'
+import ProgramList from '../components/program/ProgramList';
+import CreateExercise from '../components/program/CreateExercise';
 
-                            <Segment>
-                                <Segment basic>
-                                    <div>
-                                        <Modal
-                                            trigger={<Button positive >Edit</Button>}
-                                            header='Program Editor'
-                                            content={<SplitProgram />}
-                                            actions={['Close', { key: 'done', content: 'Done', positive: true }]}
-                                        />
-                                        <Header as='h2' icon textAlign='center'>
-                                            <Icon name='users' circular />
-                                            <Header.Content>Power Lifting</Header.Content>
-                                        </Header>
-                                        <Image
-                                            centered
-                                            size='large'
-                                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
-                                        />
-                                    </div>
-                                </Segment>
-                            </Segment>
 
-                            <Segment>
-                                <Segment basic>
-                                    <div>
-                                        <Modal
-                                            trigger={<Button positive >Edit</Button>}
-                                            header='Program Editor'
-                                            content={<SplitProgram />}
-                                            actions={['Close', { key: 'done', content: 'Done', positive: true }]}
-                                        />
-                                        <Header as='h2' icon textAlign='center'>
-                                            <Icon name='users' circular />
-                                            <Header.Content>Power Lifting</Header.Content>
-                                        </Header>
-                                        <Image
-                                            centered
-                                            size='large'
-                                            src='https://react.semantic-ui.com/images/wireframe/centered-paragraph.png'
-                                        />
-                                    </div>
-                                </Segment>
-                            </Segment>
-                        </div>
-                    </Container>
-                    <MyPagination/>
-                </Segment>
-            </Container>
-        </div>
-    );
-};
+const panes = [
+    { menuItem: 'Tab 1', render: () => <Tab.Pane><ProgramList /> </Tab.Pane> },
+    { menuItem: 'Tab 2', render: () => <Tab.Pane><CreateExercise/></Tab.Pane> },
+  ]
+
+
+const Program = () =>  <Container><Tab panes={panes}/></Container>
+
 
 export default Program;

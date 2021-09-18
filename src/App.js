@@ -1,136 +1,90 @@
 //Global
-import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import React, { Component } from 'react'
+import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 //Local
 import './App.css';
 import Program from './pages/Program';
 import { ROUTES } from './lib/enums';
 import Home from './pages/Home';
-
+import Train from './pages/Train';
 
 import {
-  Button,
+  Checkbox,
+  Grid,
   Header,
   Icon,
+  Image,
   Menu,
   Segment,
   Sidebar,
-  Image,
 } from 'semantic-ui-react'
-import Navbar from './components/Navbar';
 import Diray from './pages/Diray';
-
-
-
-
-
-
-const VerticalSidebar = ({ animation, direction, visible }) => (
-  <Sidebar
-    as={Menu}
-    animation={animation}
-    direction={direction}
-    icon='labeled'
-    inverted
-    vertical
-    visible={visible}
-    width='thin'
-  >
-    <Menu.Item >
-      <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-          Project Name
-      </Menu.Item>
-    <Menu.Item as='a'>
-      <Icon name='home' />
-      Home
-    </Menu.Item>
-    <Menu.Item as='a'>
-      <Icon name='gamepad' />
-      Program
-    </Menu.Item>
-    <Menu.Item as='a'>
-      <Icon name='camera' />
-      Diray
-    </Menu.Item>
-    <Menu.Item as='a'>
-      <Icon name='food' />
-      Food
-    </Menu.Item>
-  </Sidebar>
-)
-
-function exampleReducer(state, action) {
-  switch (action.type) {
-    case 'CHANGE_ANIMATION':
-      return { ...state, animation: action.animation, visible: !state.visible }
-    case 'CHANGE_DIMMED':
-      return { ...state, dimmed: action.dimmed }
-    case 'CHANGE_DIRECTION':
-      return { ...state, direction: action.direction, visible: false }
-    default:
-      throw new Error()
-  }
-}
-
-
-
-
 
 function App() {
 
-
-
-
-  const [state, dispatch] = React.useReducer(exampleReducer, {
-    animation: 'overlay',
-    direction: 'left',
-    dimmed: false,
-    visible: false,
-  })
-
-  const { animation, dimmed, direction, visible } = state
-  const vertical = direction === 'bottom'
-
-
-
+  const [visible, setVisible] = React.useState(false)
 
   return (
+    <BrowserRouter>
+    <Grid columns={1}>
 
-
-
-
-    <Sidebar.Pushable as={Segment} style={{ overflow: 'hidden' }}>
-
-      {!vertical && (
-        <VerticalSidebar
-          animation={animation}
-          direction={direction}
+    <Grid.Column>
+      <Sidebar.Pushable as={Segment}>
+        <Sidebar
+          as={Menu}
+          animation='push'
+          icon='labeled'
+          inverted
+          onHide={() => setVisible(false)}
+          vertical
           visible={visible}
-        />
-      )}
-
-      <Sidebar.Pusher dimmed={dimmed && visible}>
-
-        <Navbar />
-        <Button
-          onClick={() =>
-            dispatch({ type: 'CHANGE_ANIMATION', animation: 'push' })
-          }
+          width='thin'
         >
+      <Menu.Item style={{display:'flex', justifyContent:'center'}} >
+      <div style={{display:'flex', justifyContent:'center'}}>
+      <Image size='mini' src='/logo.png'  />
+      </div>
+      </Menu.Item>
+      <Link to='/'>
+          <Menu.Item as='a'>
+            <Icon name='home' />
+            Home
+          </Menu.Item>
+          </Link>
+          <Link to='/program'>
+          <Menu.Item as='a'>
+            <Icon name='gamepad' />
+            Program
+          </Menu.Item>
+          </Link>
+          <Link to='/diray'>
+          <Menu.Item as='a'>
+            <Icon name='camera' />
+            Diray
+          </Menu.Item>
+          </Link>
+        </Sidebar>
 
-          Push
-        </Button>
-      </Sidebar.Pusher>
+        <Sidebar.Pusher>
+
+          <Menu inverted attached='top' borderless>
+
+          <Menu.Item icon="align justify"
+           onClick={(e, data) =>  setVisible(true) }
+          />
+
+      </Menu>
 
 
-
-    
-      <BrowserRouter>
         <Switch>
 
           <Route exact path={ROUTES.HOME.path}>
             <Home />
+          </Route>
+
+          <Route exact path={ROUTES.TRAIN.path}>
+            <Train/>
           </Route>
 
           <Route exact path={ROUTES.PROGRAM.path}>
@@ -141,6 +95,9 @@ function App() {
             <Diray/>
           </Route>
 
+          
+
+
           <Route exact path={ROUTES.FOOD.path}>
             {/* FOOD */}
           </Route>
@@ -149,16 +106,25 @@ function App() {
             {/* <Error /> */}
           </Route>
 
+          
           <Redirect to='/error' />
 
         </Switch>
+        
+   
+
+
+
+      </Sidebar.Pusher>
+      </Sidebar.Pushable>
+      </Grid.Column>
+      </Grid>
+
+
       </BrowserRouter>
 
-
-    </Sidebar.Pushable>
-
-
   );
+  
 }
 
 export default App;
