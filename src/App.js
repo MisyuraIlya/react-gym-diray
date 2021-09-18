@@ -1,6 +1,6 @@
 //Global
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 //Local
 import './App.css';
@@ -21,32 +21,13 @@ import {
 } from 'semantic-ui-react'
 import Diray from './pages/Diray';
 
-
-
-
-
-
-
-
-
-
 function App() {
-
 
   const [visible, setVisible] = React.useState(false)
 
-
-
-
   return (
-
-
-
-
-
-
+    <BrowserRouter>
     <Grid columns={1}>
-
 
     <Grid.Column>
       <Sidebar.Pushable as={Segment}>
@@ -60,37 +41,42 @@ function App() {
           visible={visible}
           width='thin'
         >
+      <Menu.Item style={{display:'flex', justifyContent:'center'}} >
+      <div style={{display:'flex', justifyContent:'center'}}>
+      <Image size='mini' src='/logo.png'  />
+      </div>
+      </Menu.Item>
+      <Link to='/'>
           <Menu.Item as='a'>
             <Icon name='home' />
             Home
           </Menu.Item>
+          </Link>
+          <Link to='/program'>
           <Menu.Item as='a'>
             <Icon name='gamepad' />
-            Games
+            Program
           </Menu.Item>
+          </Link>
+          <Link to='/diray'>
           <Menu.Item as='a'>
             <Icon name='camera' />
-            Channels
+            Diray
           </Menu.Item>
+          </Link>
         </Sidebar>
 
         <Sidebar.Pusher>
 
-
-    
-          <Menu>
-
+          <Menu inverted attached='top' borderless>
 
           <Menu.Item icon="align justify"
-           onClick={(e, data) =>  console.log("clicked") }
+           onClick={(e, data) =>  setVisible(true) }
           />
-                <Checkbox
-        onClick={(e, data) => setVisible(data.checked)}
-      />
 
       </Menu>
 
-      <BrowserRouter>
+
         <Switch>
 
           <Route exact path={ROUTES.HOME.path}>
@@ -125,7 +111,7 @@ function App() {
 
         </Switch>
         
-      </BrowserRouter>
+   
 
 
 
@@ -135,7 +121,7 @@ function App() {
       </Grid>
 
 
-
+      </BrowserRouter>
 
   );
   

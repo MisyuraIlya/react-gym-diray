@@ -1,43 +1,18 @@
 
 
 import React, { Component } from 'react'
-import { Input, Menu, Segment,Container } from 'semantic-ui-react'
+import { Input, Menu, Segment,Container,Tab } from 'semantic-ui-react'
 import ProgramList from '../components/program/ProgramList';
 import CreateExercise from '../components/program/CreateExercise';
 
 
-export default class MenuExampleTabularOnTop extends Component {
-    state = { activeItem: 'Create Program' }
+const panes = [
+    { menuItem: 'Tab 1', render: () => <Tab.Pane><ProgramList /> </Tab.Pane> },
+    { menuItem: 'Tab 2', render: () => <Tab.Pane><CreateExercise/></Tab.Pane> },
+  ]
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-    render() {
-        const { activeItem } = this.state
+const Program = () =>  <Container><Tab panes={panes}/></Container>
 
-        return (
-            <div>
-                <Container>
-                    <Menu attached='top' tabular>
-                        <Menu.Item
-                            name='Create Program'
-                            active={activeItem === 'Create Program'}
-                            onClick={this.handleItemClick}
-                        />
-                        <Menu.Item
-                            name='Create Exercise'
-                            active={activeItem === 'Create Exercise'}
-                            onClick={this.handleItemClick}
-                        />
- 
-                    </Menu>
 
-                    <Segment attached='bottom'>
-                        <ProgramList /> 
-                        {/* <CreateExercise/> */}
-                    </Segment>
-                </Container >
-            </div>
-
-        )
-    }
-}
+export default Program;

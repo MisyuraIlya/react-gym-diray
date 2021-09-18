@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Accordion, Icon, Button , Grid , Divider , Header , Segment} from 'semantic-ui-react'
 import OldProgram from '../diray/OldProgram'
+import { Link } from 'react-router-dom';
+
 
 export default class AccordionExampleFluid extends Component {
     state = { activeIndex: 0 }
@@ -42,10 +44,9 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 0}>
                     <OldProgram />
-                    <Button primary onClick={this.handleItemClick,(e) => {
-              e.preventDefault();
-              window.location.href='http://localhost:3000/train';
-              }}>Start Train</Button>
+                    <Link to='/train'>
+                    <Button primary >Start Train</Button>
+                    </Link>
                 </Accordion.Content>
 
                 <Accordion.Title
@@ -58,10 +59,9 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 1}>
                     <OldProgram />
-                    <Button primary onClick={this.handleItemClick,(e) => {
-              e.preventDefault();
-              window.location.href='http://localhost:3000/train';
-              }}>Start Train</Button>
+                    <Link to='/train'>
+                    <Button primary >Start Train</Button>
+                    </Link>
                 </Accordion.Content>
 
                 <Accordion.Title
@@ -74,10 +74,9 @@ export default class AccordionExampleFluid extends Component {
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === 2}>
                     <OldProgram />
-                    <Button primary onClick={this.handleItemClick,(e) => {
-              e.preventDefault();
-              window.location.href='http://localhost:3000/train';
-              }}>Start Train</Button>
+                    <Link to='/train'>
+                    <Button primary >Start Train</Button>
+                    </Link>
                 </Accordion.Content>
             </Accordion>
                 </Grid.Column>
