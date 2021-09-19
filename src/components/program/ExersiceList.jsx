@@ -1,38 +1,39 @@
+//Global
 import React from 'react';
+import {Grid, Header, Table} from 'semantic-ui-react'
+//Local
 import Exercise from './ProgramItem';
-import { Grid, Header, Table } from 'semantic-ui-react'
 
-const ExersiceList = ({ exercises, title }) => {
 
-    return (
-        <Grid.Row>
-            <Grid.Column>
-                <Header as='h1'>{title}</Header>
+const ExersiceList = ({exercises, title}) => {
 
-                <Grid columns={2}>
-                    <Grid.Column width={16}>
-                        <Table celled structured>
-                            <Table.Header>
-                                <Table.Row>
-                                    <Table.HeaderCell rowSpan='2'>Упражнения</Table.HeaderCell>
-                                    <Table.HeaderCell rowSpan='2'>Сеты</Table.HeaderCell>
-                                    <Table.HeaderCell rowSpan='2'>Повторение</Table.HeaderCell>
-                                    <Table.HeaderCell rowSpan='2'>Опции</Table.HeaderCell>
-                                </Table.Row>
-                            </Table.Header>
+  return (
+    <Grid.Row>
+      <Grid.Column>
+        <Header as='h1'>{title}</Header>
 
-                            <Table.Body>
-                                {exercises.map(exercise =>
-                                    <Exercise exercise={exercise} key={exercise.id} />
-                                )}
-                            </Table.Body>
-                        </Table>
+        <Grid columns={2}>
+          <Grid.Column width={16}>
+            <Table celled structured>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell rowSpan='2'>Упражнения</Table.HeaderCell>
+                  <Table.HeaderCell rowSpan='2'>Сеты</Table.HeaderCell>
+                  <Table.HeaderCell rowSpan='2'>Повторение</Table.HeaderCell>
+                  <Table.HeaderCell rowSpan='2'>Опции</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
 
-                    </Grid.Column>
-                </Grid>
-            </Grid.Column>
-        </Grid.Row>
-    );
+              <Table.Body>
+                {exercises.map(exercise => <Exercise exercise={exercise} key={exercise.id}/>)}
+              </Table.Body>
+            </Table>
+
+          </Grid.Column>
+        </Grid>
+      </Grid.Column>
+    </Grid.Row>
+  );
 };
 
 export default ExersiceList;
