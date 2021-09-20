@@ -1,5 +1,5 @@
 //Global
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Icon, Image, Modal, Form} from 'semantic-ui-react'
 
 const options = [
@@ -20,8 +20,20 @@ const options = [
 
 const ProgramModal = () => {
 
+  const [nameProgram,
+    setNameProgram] = useState('')
+
+  const [selectionProgram,
+    setSelectionProgram] = useState('')
+
   const [open,
     setOpen] = React.useState(false)
+
+  const addNewProgram = (e) => {
+    e.preventDefault()
+    console.log(nameProgram)
+    console.log(selectionProgram)
+  }
 
   return (
     <Modal
@@ -31,9 +43,10 @@ const ProgramModal = () => {
       trigger={< Button primary > Creating program </Button>}>
       <Modal.Header>Profile Picture</Modal.Header>
       <Modal.Content image scrolling>
+        <Button icon="file image outline"/>
         <Image size='medium' src='/images/wireframe/image.png' wrapped/>
-
         <Modal.Description>
+
           <p>
             This is an example of expanded content that will cause the modal's dimmer to
             scroll.
@@ -41,8 +54,19 @@ const ProgramModal = () => {
 
           <Form>
             <Form.Group widths='equal'>
-              <Form.Input fluid label='Program Name' placeholder='Program Name'/>
-              <Form.Select fluid label='Training' options={options} placeholder='Training'/>
+              <Form.Input
+                value={nameProgram}
+                fluid
+                label='Program Name'
+                placeholder='Program Name'
+                onChange={e => setNameProgram(e.target.value)}/>
+              <Form.Select
+                fluid
+                value={selectionProgram}
+                label='Training'
+                options={options}
+                placeholder='Training'
+                onChange={e => setSelectionProgram(e.target.value)}/>
             </Form.Group>
 
             <Form.TextArea label='About the program' placeholder='Description...'/>
@@ -52,7 +76,7 @@ const ProgramModal = () => {
 
       </Modal.Content>
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)} positive>
+        <Button onClick={() => setOpen(false)} positive onClick={addNewProgram}>
           Add
           <Icon name='chevron right'/>
         </Button>
