@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 //Local
 import OldProgram from '../diray/OldProgram'
-import ProgramList from '../program/ProgramList';
+import ChooseProgram from './ChooseProgram';
 
 export default class AccordionExampleFluid extends Component {
   state = {
@@ -94,13 +94,9 @@ export default class AccordionExampleFluid extends Component {
               <Modal
                 trigger={< Button primary > Choose </Button>}
                 header='Choose program'
-                content={< ProgramList />}
+                content={<ChooseProgram/>}
                 actions={[
-                'Close', {
-                  key: 'done',
-                  content: 'Choose',
-                  positive: true
-                }
+                'Close'
               ]}/>
             </Grid.Column>
           </Grid.Row>

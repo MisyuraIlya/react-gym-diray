@@ -7,6 +7,7 @@ import Searching from '../components/diray/Searching';
 import MyPagination from '../components/MyPagination';
 import OldProgram from '../components/diray/OldProgram';
 import ProgramList from '../components/program/ProgramList';
+import ChooseProgram from '../components/home/ChooseProgram';
 
 
 const Diray = () => {
@@ -47,7 +48,7 @@ const Diray = () => {
               <Modal
                 trigger={< Button primary > Choose </Button>}
                 header='Choose program'
-                content={< ProgramList />}
+                content={<ChooseProgram/>}
                 actions={[
                 'Close', {
                   key: 'done',

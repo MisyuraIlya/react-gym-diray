@@ -26,7 +26,7 @@ const PostForm = ({create}) => {
     <Modal
       closeIcon
       open={open}
-      trigger={< Button positive > Show Modal </Button>}
+      trigger={<Button  style={{marginTop:"20px"}}positive icon='plus square'  />}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}>
       <Header icon='archive' content='Добавит новое упражнения'/>
