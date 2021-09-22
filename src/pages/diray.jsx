@@ -1,6 +1,18 @@
 //Global
-import React from 'react';
-import {Container,Segment,Grid,Message,Header,Button,Card,Modal,Icon} from 'semantic-ui-react';
+import React, {useState} from 'react';
+import {
+  Container,
+  Segment,
+  Grid,
+  Message,
+  Header,
+  Button,
+  Card,
+  Modal,
+  Icon,
+  Select,
+  Input
+} from 'semantic-ui-react';
 
 //Local
 import Searching from '../components/diray/Searching';
@@ -8,10 +20,86 @@ import MyPagination from '../components/MyPagination';
 import OldProgram from '../components/diray/OldProgram';
 import ProgramList from '../components/program/ProgramList';
 import ChooseProgram from '../components/home/ChooseProgram';
-
+import SelectOption from '../components/diray/SelectOption';
 
 const Diray = () => {
 
+  const [seatchQuery,
+    setSearchQuery] = useState()
+  const [diray,
+    setDiray] = useState([
+    {
+      dirayDay: 'A',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'B',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'C',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'A',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'B',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'C',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'A',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'B',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'C',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'A',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'B',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'C',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'A',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }, {
+      dirayDay: 'B',
+      dirayStyle: 'Power',
+      dirayDate: '15.05.2021',
+      dirayDesctiption: 'aaaaaas'
+    }
+  ])
   const [open,
     setOpen] = React.useState(false)
 
@@ -48,7 +136,7 @@ const Diray = () => {
               <Modal
                 trigger={< Button primary > Choose </Button>}
                 header='Choose program'
-                content={<ChooseProgram/>}
+                content={< ChooseProgram />}
                 actions={[
                 'Close', {
                   key: 'done',
@@ -64,138 +152,30 @@ const Diray = () => {
       {/* end choosed program */}
       <Header as='h1'>ELSE</Header>
       <Segment>
-        <Searching/>
-
-        <Grid columns={5} divided style={{
-          marginTop: "40px"
-        }}>
+        {/* <Searching/> */}
+        {/* <SelectOption
+              options={[
+                {value:'dirayDay' , text: 'A' },
+                {value:'dirayStyle' , text: 'Power' }
+              ]}
+              /> */}
+        <Input 
+        placeholder='Search...'/>
+        <Grid columns={5}>
           <Grid.Row>
-            <Grid.Column>
+            {diray.map(list => <Grid.Column>
 
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
-            <Grid.Column>
-              <Card
-                onClick={() => setOpen(true)}
-                link
-                header='Power - Day A'
-                meta=' 15.09.2021'
-                description={['1 exersice - ', ' nihilistic behavior are a source of concern for his family.'].join('')}/>
-            </Grid.Column>
+              <div style={{
+                marginTop: '20px'
+              }}>
+                <Card
+                  onClick={() => setOpen(true)}
+                  link
+                  header={list.dirayStyle}
+                  meta={list.dirayDate}
+                  description={list.dirayDesctiption}/>
+              </div>
+            </Grid.Column>)}
           </Grid.Row>
 
         </Grid>

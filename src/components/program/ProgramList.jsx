@@ -1,5 +1,5 @@
 //Global
-import React from 'react';
+import React,{ useState } from 'react';
 import {
   Segment,
   Container,
@@ -13,29 +13,43 @@ import {
 
 //Local
 import SplitProgram from './SplitProgram';
-import CreateProgram from './CreateProgram';
 import MyPagination from '../MyPagination';
+import ProgramModal from './ProgramModal';
 
-const ProgramState = [
-  {
-    programName: 'program A',
-    programStyle: 'Power',
-    programDescription: 'aaaaaaaa',
-    img: '/img/1.jpg'
-  }, {
-    programName: 'program B',
-    programStyle: 'Mass',
-    programDescription: 'bbbbbbbb',
-    img: '/img/2.jpg'
-  }, {
-    programName: 'program C',
-    programStyle: 'Fitness',
-    programDescription: 'bbbbbbbb',
-    img: '/img/2.jpg'
-  }
-]
+
 
 const ProgramList = () => {
+
+
+
+  const [programState,setProgramState] = useState([
+    {
+      id:1,
+      programName: 'program A',
+      programStyle: 'Power',
+      programDescription: 'aaaaaaaa',
+    }, {
+      id:2,
+      programName: 'program B',
+      programStyle: 'Mass',
+      programDescription: 'bbbbbbbb',
+    }, {
+      id:3,
+      programName: 'program C',
+      programStyle: 'Fitness',
+      programDescription: 'bbbbbbbb',
+    }
+  ])
+
+  const createProgram = (newProgram) => {
+    setProgramState([...programState,newProgram])
+  }
+
+  const removeProgram = (program) => {
+    setProgramState(programState.filter(p => p.id !== program.id))
+   
+  }
+
   return (
     <Container>
       <Header
@@ -51,10 +65,10 @@ const ProgramList = () => {
             display: 'flex',
             justifyContent: 'center'
           }}>
-            <CreateProgram/>
+            <ProgramModal create2={createProgram} />
           </div>
 
-          {ProgramState.map(list => <Segment>
+          {programState.map(list => <Segment>
             <Segment basic>
               <div>
                 <Modal
@@ -68,6 +82,7 @@ const ProgramList = () => {
                     positive: true
                   }
                 ]}/>
+                < Button color='red' onClick={() => removeProgram(list)}> Remove </Button>
                 <Grid columns={3} >
                   <Grid.Row>
                     <Grid.Column>
@@ -82,6 +97,9 @@ const ProgramList = () => {
                 </Grid>
                 <Header as='h2' icon textAlign='center'>
                   <Header.Content>{list.programName}</Header.Content>
+                </Header>
+                <Header as='h5' icon textAlign='center'>
+                  <Header.Content>{list.programStyle}</Header.Content>
                 </Header>
                 <Header as='h3' textAlign='center'>{list.programDescription}</Header>
               </div>

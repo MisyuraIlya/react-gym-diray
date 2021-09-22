@@ -10,7 +10,7 @@ const exercise = (props) => {
       <Table.Cell textAlign='center'>{props.exercise.sets}</Table.Cell>
       <Table.Cell textAlign='center'>{props.exercise.reps}</Table.Cell>
       <Table.Cell textAlign='center'>
-        <Button negative>Delete</Button>
+        <Button negative onClick={() => props.remove(props.exercise)}>Delete</Button>
       </Table.Cell>
     </Table.Row>
   );

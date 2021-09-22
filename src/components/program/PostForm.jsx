@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import {Button, Header, Icon, Modal, Input} from 'semantic-ui-react'
 
-const PostForm = ({create}) => {
+const PostForm = ({create,remove}) => {
 
   const [exercise,
     setExercise] = useState({name: '', sets: '', reps: ''})

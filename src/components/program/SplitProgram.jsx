@@ -1,41 +1,76 @@
 //Global
 import React, {useState} from 'react';
-import {Grid,Segment,Container,} from 'semantic-ui-react'
+import {Grid,Segment,Container,Button} from 'semantic-ui-react'
 //Local
 import PostForm from './PostForm';
 import ExersiceList from './ExersiceList';
 
 const SplitProgram = () => {
-  const [exercises,
-    setExercises] = useState([
-    {
-      id: 1,
-      name: "Жим лежа",
-      sets: "4",
-      reps: "12-6"
-    }, {
-      id: 2,
-      name: "Брусья",
-      sets: "4",
-      reps: "12-6"
-    }, {
-      id: 3,
-      name: "Бабочка",
-      sets: "4",
-      reps: "12-6"
-    }
+  const [exercisesA,
+    setExercisesA] = useState([
+    {id: 1, name: "A", sets: "4", reps: "12-6"},
+    {id: 2,name: "B",sets: "4",reps: "12-6"}, 
+    {id: 3,name: "C",sets: "4", reps: "12-6"}
   ])
 
-  const createExercise = (newExercise) => {
-    setExercises([
-      ...exercises,
+  const [exercisesB,
+    setExercisesB] = useState([
+    {id: 1, name: "D", sets: "4", reps: "12-6"},
+    {id: 2,name: "E",sets: "4",reps: "12-6"}, 
+    {id: 3,name: "F",sets: "4", reps: "12-6"}
+  ])
+
+  const [exercisesC,
+    setExercisesC] = useState([
+    {id: 1, name: "G", sets: "4", reps: "12-6"},
+    {id: 2,name: "H",sets: "4",reps: "12-6"}, 
+    {id: 3,name: "K",sets: "4", reps: "12-6"}
+  ])
+
+  const [exercisesD,
+    setExercisesD] = useState([
+    {id: 1, name: "L", sets: "4", reps: "12-6"},
+    {id: 2,name: "M",sets: "4",reps: "12-6"}, 
+    {id: 3,name: "Y",sets: "4", reps: "12-6"}
+  ])
+
+
+  const createExerciseA = (newExercise) => {
+    setExercisesA([
+      ...exercisesA,
+      newExercise
+    ])
+  }
+  const createExerciseB = (newExercise) => {
+    setExercisesB([
+      ...exercisesB,
       newExercise
     ])
   }
 
+  const createExerciseC = (newExercise) => {
+    setExercisesC([
+      ...exercisesC,
+      newExercise
+    ])
+  }
+
+  const createExerciseD = (newExercise) => {
+    setExercisesD([
+      ...exercisesD,
+      newExercise
+    ])
+  }
+
+
+  const removeExercise = (exercise) => {
+    setExercisesA(exercisesA.filter(e => e.id !== exercise.id))
+  }
   return (
     <div >
       <Container>
+      <Button content="add new day" positive/>
+
         <Segment>
           <Container>
             <Grid columns={2}>
@@ -43,13 +78,13 @@ const SplitProgram = () => {
 
                 <Grid.Column>
                   <Segment>
-                    <ExersiceList exercises={exercises} title="Day A"/>
+                    <ExersiceList remove={removeExercise} exercises={exercisesA} title="Day A"/>
                     <div
                       style={{
                       display: 'flex',
                       justifyContent: 'center'
                     }}>
-                      <PostForm create={createExercise}/>
+                      <PostForm  create={createExerciseA}/>
                     </div>
                   </Segment>
 
@@ -57,13 +92,13 @@ const SplitProgram = () => {
 
                 <Grid.Column>
                   <Segment>
-                    <ExersiceList exercises={exercises} title="Day A"/>
+                    <ExersiceList exercises={exercisesB} title="Day B"/>
                     <div
                       style={{
                       display: 'flex',
                       justifyContent: 'center'
                     }}>
-                      <PostForm create={createExercise}/>
+                      <PostForm create={createExerciseB}/>
                     </div>
                   </Segment>
 
@@ -71,13 +106,13 @@ const SplitProgram = () => {
 
                 <Grid.Column>
                   <Segment>
-                    <ExersiceList exercises={exercises} title="Day A"/>
+                    <ExersiceList exercises={exercisesC} title="Day C"/>
                     <div
                       style={{
                       display: 'flex',
                       justifyContent: 'center'
                     }}>
-                      <PostForm create={createExercise}/>
+                      <PostForm create={createExerciseC}/>
                     </div>
                   </Segment>
 
@@ -85,13 +120,13 @@ const SplitProgram = () => {
 
                 <Grid.Column>
                   <Segment>
-                    <ExersiceList exercises={exercises} title="Day A"/>
+                    <ExersiceList exercises={exercisesD} title="Day D"/>
                     <div
                       style={{
                       display: 'flex',
                       justifyContent: 'center'
                     }}>
-                      <PostForm create={createExercise}/>
+                      <PostForm create={createExerciseD}/>
                     </div>
                   </Segment>
 

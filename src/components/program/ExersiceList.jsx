@@ -5,7 +5,7 @@ import {Grid, Header, Table} from 'semantic-ui-react'
 import Exercise from './ProgramItem';
 
 
-const ExersiceList = ({exercises, title}) => {
+const ExersiceList = ({exercises, title , remove}) => {
 
   return (
     <Grid.Row>
@@ -25,7 +25,7 @@ const ExersiceList = ({exercises, title}) => {
               </Table.Header>
 
               <Table.Body>
-                {exercises.map(exercise => <Exercise exercise={exercise} key={exercise.id}/>)}
+                {exercises.map(exercise => <Exercise remove={remove} exercise={exercise} key={exercise.id}/>)}
               </Table.Body>
             </Table>
 
