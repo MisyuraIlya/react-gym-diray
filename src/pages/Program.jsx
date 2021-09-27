@@ -6,17 +6,22 @@ import {Container, Tab} from 'semantic-ui-react'
 import ProgramList from '../components/program/ProgramList';
 import CreateExercise from '../components/program/CreateExercise';
 
-const panes = [
-  {
-    menuItem: 'Tab 1',
-    render: () => <Tab.Pane><ProgramList/>
-      </Tab.Pane>
-  }, {
-    menuItem: 'Tab 2',
-    render: () => <Tab.Pane><CreateExercise/></Tab.Pane>
-  }
-]
+// Defines
+const {Pane} = Tab;
 
-const Program = () => <Container><Tab panes={panes}/></Container>
+const Program = () => {
+  const tab1 = {
+    menuItem: 'Programs',
+    render: () => <Pane><ProgramList/></Pane>
+  }
+  const tab2 = {
+    menuItem: 'Tab 2',
+    render: () => <Pane><CreateExercise/></Pane>
+  }
+
+  return <Container>
+    <Tab panes={[ tab1, tab2 ]}/>
+  </Container>
+}
 
 export default Program;

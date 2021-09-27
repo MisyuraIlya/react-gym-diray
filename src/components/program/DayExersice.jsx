@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react/cjs/react.development';
+import { useState, useEffect } from 'react/cjs/react.development';
 import {
   Grid,
   Segment,
@@ -8,44 +8,54 @@ import {
   Table,
   Header
 } from 'semantic-ui-react'
+// Local
+import api from '../../lib/api';
 import PostForm from './PostForm';
 import dataExercise from './ProgramExercises'
 
-const DayExersice = ({days}) => {
-  let arr = [];
-  for (let i = 0; i < days; i++) {
-    arr.push({id: i, day: i})
-  }
-  const [day,
-    setDay] = useState(arr)
+const DayExersice = ({programId}) => {
+  const [loading, setLoading] = useState(false);
+  const [exercises, setExercises] = useState([]);
 
-  let lastelement = day[day.length - 1]
-  const addNewDay = () => {
-
-    setDay([
-      ...day, {
-        id: lastelement.id + 1,
-        day: lastelement.day + 1
-      }
-    ])
-
+  async function loadExercises() {
+    setLoading(true);
+    try {
+      // Fix pagination here
+      const {data} = await api.fetchProgramExerisice(programId);
+      setExercises(data)
+    } catch(error) {
+      // TODO! Fix me!
+      console.log('Found some error', error);
+    } finally {
+      setLoading(false);
+    }
   }
 
-  // console.log(day)
+  useEffect(() => loadExercises(), []);
+
+  const addNewDay = async () => {
+    await api.addProgramExersiceDay(programId)
+    await loadExercises();
+  }
+
+  const deleteExersice = async (programId, index, id) => {
+    await api.deleteExersiceDay(programId, index, id)
+    await loadExercises();
+  }
+
   return (
     <Container>
 
       <Button content="add new day" positive onClick={addNewDay}/>
-
       <Segment>
         <Container>
           <Grid columns={2}>
             <Grid.Row stretched>
-              {day.map(list => <Grid.Column>
+              {exercises.map((exercise, index) => <Grid.Column>
                 <Segment>
                   <Grid.Row>
                     <Grid.Column>
-                      <Header>Day: {list.day + 1}</Header>
+                      <Header>Day: {index + 1}</Header>
                       <Grid columns={2}>
                         <Grid.Column width={16}>
                           <Table celled structured>
@@ -57,31 +67,24 @@ const DayExersice = ({days}) => {
                                 <Table.HeaderCell rowSpan='2'>Опции</Table.HeaderCell>
                               </Table.Row>
                             </Table.Header>
-                            {dataExercise[list.day]
-                              ? dataExercise[list.day].map(e => <Table.Body>
-                                <Table.Row>
-                                  <Table.Cell>{e.name}</Table.Cell>
-                                  <Table.Cell textAlign='center'>{e.sets}</Table.Cell>
-                                  <Table.Cell textAlign='center'>{e.reps}</Table.Cell>
-                                  <Table.Cell textAlign='center'>
-                                    <Button negative>Delete</Button>
-                                  </Table.Cell>
-                                </Table.Row>
-                              </Table.Body>)
-                              : null}
+                            {exercise.map(({id, name, sets, repetitions}) => <Table.Body>
+                              <Table.Row>
+                                <Table.Cell>{name}</Table.Cell>
+                                <Table.Cell textAlign='center'>{sets}</Table.Cell>
+                                <Table.Cell textAlign='center'>{repetitions}</Table.Cell>
+                                <Table.Cell textAlign='center'>
+                                  <Button negative onClick={() => deleteExersice(programId, index, id)}>Delete</Button>
+                                </Table.Cell>
+                              </Table.Row>
+                            </Table.Body>)}
                           </Table>
 
                         </Grid.Column>
                       </Grid>
-                      <PostForm thisCurrent={list.day}/>
+                      <PostForm programId={programId} exersiceId={index} onSuccess={() => loadExercises()}/>
 
                     </Grid.Column>
                   </Grid.Row>
-                  <div
-                    style={{
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}></div>
                 </Segment>
 
               </Grid.Column>)}

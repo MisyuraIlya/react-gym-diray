@@ -96,8 +96,8 @@ export default class AccordionExampleFluid extends Component {
                 header='Choose program'
                 content={<ChooseProgram/>}
                 actions={[
-                'Close'
-              ]}/>
+                  'Close'
+                ]}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>

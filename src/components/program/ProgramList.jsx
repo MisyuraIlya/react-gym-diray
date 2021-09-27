@@ -1,10 +1,9 @@
 //Global
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Segment,
   Container,
   Header,
-  Icon,
   Image,
   Button,
   Modal,
@@ -12,11 +11,11 @@ import {
 } from 'semantic-ui-react'
 
 //Local
-import SplitProgram from './SplitProgram';
-import MyPagination from '../MyPagination';
+// import api from '../../lib/api';
+// import MyPagination from '../MyPagination';
 import ProgramModal from './ProgramModal';
-
 import DayExersice from "./DayExersice";
+import api from '../../lib/api';
 
 const dataDay = {
   cardData: [
@@ -35,117 +34,104 @@ const dataDay = {
     }
   ]
 }
+
 const ProgramList = () => {
+  const [loading, setLoading] = useState(false);
+  const [loadingId, setLoadingId] = useState(null);
+  const [programs, setPrograms] = useState([]);
 
-  const dates = dataDay.cardData
-  const [programState,
-    setProgramState] = useState([
-    {
-      id: 1,
-      programName: 'program A',
-      programStyle: 'Power',
-      programDescription: 'aaaaaaaa'
-    }, {
-      id: 2,
-      programName: 'program B',
-      programStyle: 'Mass',
-      programDescription: 'bbbbbbbb'
-    }, {
-      id: 3,
-      programName: 'program C',
-      programStyle: 'Fitness',
-      programDescription: 'bbbbbbbb'
-    }, {
-      id: 4,
-      programName: 'program C',
-      programStyle: 'Fitness',
-      programDescription: 'bbbbbbbb'
+  async function loadPrograms() {
+    setLoading(true);
+    try {
+      // Fix pagination here
+      const {page, limit, total, data} = await api.fetchPrograms({page: 0, limit: 3});
+      setPrograms(data)
+    } catch(error) {
+      // TODO! Fix me!
+      console.log('Found some error', error);
+    } finally {
+      setLoading(false);
     }
-  ])
+  }
+
+  useEffect(() => loadPrograms(), [])
+
   const createProgram = (newProgram) => {
-    setProgramState([
-      ...programState,
-      newProgram
-    ])
+    // setProgramState([ ...programState, newProgram ]);
   }
 
-  const removeProgram = (program) => {
-    setProgramState(programState.filter(p => p.id !== program.id))
+  const removeProgram = async (id) => {
+    setLoading(true);
+    setLoadingId(id);
+    try {
+      await api.removeProgram(id);
+    } catch(error) {
+      // TODO! Fix me!
+      console.log('Found some error', error);
+    } finally {
+      setLoadingId(null)
+    }
 
+    await loadPrograms();
   }
-
-  let arrayDay = dataDay.cardData.length
 
   return (
     <Container>
-      <Header
-        as='h1'
-        style={{
-        display: 'flex',
-        justifyContent: 'center'
-      }}>Program Editor</Header>
+      <Header as='h1' style={{ display: 'flex', justifyContent: 'center'}}>Program Editor</Header>
+
       <Container>
         <div>
-          <div
-            style={{
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
-            <ProgramModal
-              create2={createProgram}
-              array={programState}
-              onClick={dataDay
-              .cardData
-              .push({
-                id: arrayDay + 1,
-                title: <DayExersice days={1}/>
-              })}/>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <ProgramModal 
+              create={createProgram}
+              array={programs}
+              // onClick={dataDay.cardData.push({ id: arrayDay + 1, title: <DayExersice days={1}/>})}
+            />
           </div>
 
-          {programState.map(list => <Segment>
+          {loading && <Segment>Loading...</Segment>}
+
+          {programs.map(({id, type, name, desciption}) => <Segment>
             <Segment basic>
               <div>
-                {dates
-                  .filter(i => i.id === list.id)
-                  .map(i => <Modal
-                    trigger={< Button positive > Edit1 </Button>}
-                    header='Program Editor'
-                    content={i.title}
-                    actions={[
+                <Modal
+                  trigger={< Button positive >Edit</Button>}
+                  header='Program Editor'
+                  content={<DayExersice programId={id} days={4}/>}
+                  actions={[
                     'Close', {
                       key: 'done',
                       content: 'Done',
                       positive: true
                     }
-                  ]}/>)}
+                  ]}/> 
 
-                < Button color='red' onClick={() => removeProgram(list)}>
+                < Button color='red' onClick={() => removeProgram(id)}>
                   Remove
                 </Button>
                 <Grid columns={3}>
                   <Grid.Row>
                     <Grid.Column></Grid.Column>
-                    <Grid.Column>
-                      <Image src={list.img} size='medium' circular/>
-
-                    </Grid.Column>
                     <Grid.Column></Grid.Column>
                   </Grid.Row>
                 </Grid>
+
                 <Header as='h2' icon textAlign='center'>
-                  <Header.Content>{list.programName}</Header.Content>
+                  <Header.Content>[{id}] --- {name}</Header.Content>
                 </Header>
                 <Header as='h5' icon textAlign='center'>
-                  <Header.Content>{list.programStyle}</Header.Content>
+                  <Header.Content>{type}</Header.Content>
                 </Header>
-                <Header as='h3' textAlign='center'>{list.programDescription}</Header>
+                <Header as='h3' textAlign='center'>{desciption}</Header>
+                {loadingId === id && 'deleting'}
               </div>
             </Segment>
           </Segment>)}
 
         </div>
       </Container>
-      <MyPagination/>
+
+      {/* <MyPagination/> */}
     </Container>
   );
 };

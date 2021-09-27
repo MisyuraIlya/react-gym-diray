@@ -60,15 +60,15 @@ const Train = () => {
           </Table>
           <div
             style={{
-            display: 'flex',
-            justifyContent: 'center'
-          }}>
+              display: 'flex',
+              justifyContent: 'center'
+            }}>
             <Button
               size='big'
               positive
               style={{
-              marginTop: '50px'
-            }}>Done
+                marginTop: '50px'
+              }}>Done
             </Button>
           </div>
         </Segment>

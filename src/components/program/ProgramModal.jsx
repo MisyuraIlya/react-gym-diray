@@ -6,7 +6,7 @@ import {Button, Icon, Image, Modal, Form} from 'semantic-ui-react'
 // {     key: 'f',     text: 'Mass',     value: 'mass'   }, {     key: 'o',
 // text: 'Fitess',     value: 'fitness'   } ]
 
-const ProgramModal = ({create2,array}) => {
+const ProgramModal = ({create2: create,array}) => {
 
   const [program,
     setProgram] = useState({programName: '', programStyle: '', programDescription: ''})
@@ -38,7 +38,7 @@ const ProgramModal = ({create2,array}) => {
     const newProgram = {
       id:array.length+1,...program,
     }
-    create2(newProgram)
+    create(newProgram)
     setProgram({programName: '', programStyle: '', programDescription: ''})
     setOpen(false)
   }
@@ -74,9 +74,9 @@ const ProgramModal = ({create2,array}) => {
                 label='Program Name'
                 placeholder='Program Name'
                 onChange={e => setProgram({
-                ...program,
-                programName: e.target.value
-              })}/> {/* <Form.Select
+                  ...program,
+                  programName: e.target.value
+                })}/> {/* <Form.Select
                 fluid
                 value={selectionProgram}
                 label='Training'
@@ -89,9 +89,9 @@ const ProgramModal = ({create2,array}) => {
                 label=' Power/Mass/Fitness'
                 placeholder='Program'
                 onChange={e => setProgram({
-                ...program,
-                programStyle: e.target.value
-              })}/>
+                  ...program,
+                  programStyle: e.target.value
+                })}/>
               <Form.Input
                 type="file"
                 label=' Image'
@@ -103,9 +103,9 @@ const ProgramModal = ({create2,array}) => {
             <Form.TextArea
               value={program.programDescription}
               onChange={e => setProgram({
-              ...program,
-              programDescription: e.target.value
-            })}
+                ...program,
+                programDescription: e.target.value
+              })}
               label='About the program'
               placeholder='Description...'/>
           </Form>

@@ -1,5 +1,5 @@
 //Global
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Segment,
@@ -24,10 +24,8 @@ import SelectOption from '../components/diray/SelectOption';
 
 const Diray = () => {
 
-  const [seatchQuery,
-    setSearchQuery] = useState()
-  const [diray,
-    setDiray] = useState([
+  const [seatchQuery, setSearchQuery] = useState()
+  const [diray, setDiray] = useState([
     {
       dirayDay: 'A',
       dirayStyle: 'Power',
@@ -138,12 +136,12 @@ const Diray = () => {
                 header='Choose program'
                 content={< ChooseProgram />}
                 actions={[
-                'Close', {
-                  key: 'done',
-                  content: 'Choose',
-                  positive: true
-                }
-              ]}/>
+                  'Close', {
+                    key: 'done',
+                    content: 'Choose',
+                    positive: true
+                  }
+                ]}/>
             </Message>
           </Grid.Column>
         </Grid.Row>
@@ -160,7 +158,7 @@ const Diray = () => {
               ]}
               /> */}
         <Input 
-        placeholder='Search...'/>
+          placeholder='Search...'/>
         <Grid columns={5}>
           <Grid.Row>
             {diray.map(list => <Grid.Column>

@@ -131,9 +131,9 @@ const SplitProgram = () => {
                     <ExersiceList remove={removeExercise} exercises={exercisesA} title="Day A"/>
                     <div
                       style={{
-                      display: 'flex',
-                      justifyContent: 'center'
-                    }}>
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}>
                       <PostForm create={createExerciseA}/>
                     </div>
                   </Segment>
@@ -145,9 +145,9 @@ const SplitProgram = () => {
                     <ExersiceList exercises={exercisesB} title="Day B"/>
                     <div
                       style={{
-                      display: 'flex',
-                      justifyContent: 'center'
-                    }}>
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}>
                       <PostForm create={createExerciseB}/>
                     </div>
                   </Segment>
@@ -159,9 +159,9 @@ const SplitProgram = () => {
                     <ExersiceList exercises={exercisesC} title="Day C"/>
                     <div
                       style={{
-                      display: 'flex',
-                      justifyContent: 'center'
-                    }}>
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}>
                       <PostForm create={createExerciseC}/>
                     </div>
                   </Segment>
@@ -173,9 +173,9 @@ const SplitProgram = () => {
                     <ExersiceList exercises={exercisesD} title="Day D"/>
                     <div
                       style={{
-                      display: 'flex',
-                      justifyContent: 'center'
-                    }}>
+                        display: 'flex',
+                        justifyContent: 'center'
+                      }}>
                       <PostForm create={createExerciseD}/>
                     </div>
                   </Segment>

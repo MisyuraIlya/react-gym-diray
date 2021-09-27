@@ -1,44 +1,33 @@
 //Global
 import React, {useState} from 'react';
 import {Button, Header, Icon, Modal, Input} from 'semantic-ui-react'
-import dataExercise from './ProgramExercises'
+// Local
+import api from '../../lib/api'
 
-const PostForm = ({thisCurrent}) => {
+const PostForm = ({programId, exersiceId, onSuccess}) => {
+  const [exercise, setExercise] = useState({name: '', sets: '', repetitions: ''});
+  const [isOpened, setIsOpened] = useState(false);
 
-  const [exercise,
-    setExercise] = useState({name: '', sets: '', reps: ''})
-
-  const addProgram = (e) => {
-
-    const newExercise = {
-      ...exercise,
-      id: Date.now()
+  const addProgram = async () => {
+    try {
+      await api.addProgramExersice(programId, exersiceId, exercise);
+      setExercise({name: '', sets: '', repetitions: ''});
+      await onSuccess();
+      setIsOpened(false)
+    } catch(error) {
+      // TODO! Fix me!
+      console.log('Found some error', error);
     }
-    // create(newExercise)
-    setExercise({name: '', sets: '', reps: ''})
-    setOpen(false)
   }
 
-  const [open,
-    setOpen] = React.useState(false)
-
-  const [field,
-    setField] = useState()
-
-  const item = []
-  item.push(field)
-  console.log({id: field})
-
   return (
-
     <Modal
       closeIcon
-      open={open}
-      trigger={< Button style = {{marginTop:"20px"}}positive icon = 'plus square' onClick = {
-      e => setField(thisCurrent)
-    } />}
-      onClose={() => setOpen(false)}
-      onOpen={() => setOpen(true)}>
+      open={isOpened}
+      trigger={< Button style={{marginTop:"20px"}} positive icon='plus square' />}
+      onClose={() => setIsOpened(false)}
+      onOpen={() => setIsOpened(true)}
+    >
       <Header icon='archive' content='Добавит новое упражнения'/>
       <Modal.Content>
 
@@ -46,10 +35,7 @@ const PostForm = ({thisCurrent}) => {
           icon='chevron circle down'
           iconPosition='left'
           value={exercise.name}
-          onChange={e => setExercise({
-          ...exercise,
-          name: e.target.value
-        })}
+          onChange={({target}) => setExercise({ ...exercise, name: target.value})}
           type="text"
           placeholder="Названия упражнения"/>
 
@@ -57,33 +43,27 @@ const PostForm = ({thisCurrent}) => {
           icon='sort numeric down'
           iconPosition='left'
           value={exercise.sets}
-          onChange={e => setExercise({
-          ...exercise,
-          sets: e.target.value
-        })}
+          onChange={({target}) => setExercise({ ...exercise, sets: target.value})}
           type="text"
           placeholder="Сколько сетов"/>
 
         <Input
           icon='sort numeric up'
           iconPosition='left'
-          value={exercise.reps}
-          onChange={e => setExercise({
-          ...exercise,
-          reps: e.target.value
-        })}
+          value={exercise.repetitions}
+          onChange={({target}) => setExercise({ ...exercise, repetitions: target.value})}
           type="text"
           placeholder="Сколько повторов"/>
 
       </Modal.Content>
+
       <Modal.Actions>
-        <Button color='red' onClick={() => setOpen(false)}>
-          <Icon name='remove'/>
-          No
+        <Button color='red' onClick={() => setIsOpened(false)}>
+          <Icon name='remove'/> No
         </Button>
+
         <Button color='green' onClick={addProgram}>
-          <Icon name='checkmark'/>
-          Yes
+          <Icon name='checkmark'/> Yes
         </Button>
       </Modal.Actions>
     </Modal>
