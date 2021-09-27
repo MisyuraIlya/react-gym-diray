@@ -4,8 +4,7 @@ import {Grid, Header, Table} from 'semantic-ui-react'
 //Local
 import Exercise from './ProgramItem';
 
-
-const ExersiceList = ({exercises, title , remove}) => {
+const ExersiceList = ({exercises, title, remove}) => {
 
   return (
     <Grid.Row>

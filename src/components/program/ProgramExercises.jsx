@@ -11,16 +11,16 @@ const dataExercise = {
       sets: '4',
       reps: '12-6'
     }, {
-        id: 3,
-        name: 'aa',
-        sets: '4',
-        reps: '12-6'
-      }, {
-        id: 4,
-        name: 'bb',
-        sets: '4',
-        reps: '12-6'
-      }
+      id: 3,
+      name: 'aa',
+      sets: '4',
+      reps: '12-6'
+    }, {
+      id: 4,
+      name: 'bb',
+      sets: '4',
+      reps: '12-6'
+    }
   ],
   1: [
     {
@@ -39,11 +39,11 @@ const dataExercise = {
       sets: '4',
       reps: '12-6'
     }, {
-        id: 4,
-        name: '6',
-        sets: '4',
-        reps: '12-6'
-      }
+      id: 4,
+      name: '6',
+      sets: '4',
+      reps: '12-6'
+    }
   ],
   2: [
     {
@@ -100,12 +100,12 @@ const dataExercise = {
       sets: '4',
       reps: '12-6'
     }, {
-        id: 6,
-        name: '17',
-        sets: '4',
-        reps: '12-6'
-      }
-      
+      id: 6,
+      name: '17',
+      sets: '4',
+      reps: '12-6'
+    }
+
   ],
   4: [
     {
@@ -134,18 +134,17 @@ const dataExercise = {
       sets: '4',
       reps: '12-6'
     }, {
-        id: 6,
-        name: '23',
-        sets: '4',
-        reps: '12-6'
-      }
-      , {
-        id: 7,
-        name: '24',
-        sets: '4',
-        reps: '12-6'
-      }
-      
+      id: 6,
+      name: '23',
+      sets: '4',
+      reps: '12-6'
+    }, {
+      id: 7,
+      name: '24',
+      sets: '4',
+      reps: '12-6'
+    }
+
   ]
 }
 export default dataExercise;

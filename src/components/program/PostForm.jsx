@@ -1,32 +1,42 @@
 //Global
 import React, {useState} from 'react';
 import {Button, Header, Icon, Modal, Input} from 'semantic-ui-react'
+import dataExercise from './ProgramExercises'
 
-const PostForm = ({create,remove}) => {
+const PostForm = ({thisCurrent}) => {
 
   const [exercise,
     setExercise] = useState({name: '', sets: '', reps: ''})
 
   const addProgram = (e) => {
-    e.preventDefault()
-    // setExercises([...exercises,{...exercise, id: Date.now()}])
+
     const newExercise = {
       ...exercise,
       id: Date.now()
     }
-    create(newExercise)
+    // create(newExercise)
     setExercise({name: '', sets: '', reps: ''})
     setOpen(false)
   }
 
   const [open,
     setOpen] = React.useState(false)
+
+  const [field,
+    setField] = useState()
+
+  const item = []
+  item.push(field)
+  console.log({id: field})
+
   return (
 
     <Modal
       closeIcon
       open={open}
-      trigger={<Button  style={{marginTop:"20px"}}positive icon='plus square'  />}
+      trigger={< Button style = {{marginTop:"20px"}}positive icon = 'plus square' onClick = {
+      e => setField(thisCurrent)
+    } />}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}>
       <Header icon='archive' content='Добавит новое упражнения'/>

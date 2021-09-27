@@ -18,26 +18,22 @@ import ProgramModal from './ProgramModal';
 
 import DayExersice from "./DayExersice";
 
-
 const dataDay = {
-    cardData:[
-        {
-            id:1,
-            title:<DayExersice days={5}/>,
-        },
-        {
-            id:2,
-            title:<DayExersice days={4}/>,
-        },
-        {
-            id:3,
-            title:<DayExersice days={3}/>,
-        },
-        {
-            id:4,
-            title:<DayExersice days={1}/>,
-        },
-    ]
+  cardData: [
+    {
+      id: 1,
+      title: <DayExersice days={5} usedArray={1}/>
+    }, {
+      id: 2,
+      title: <DayExersice days={4}/>
+    }, {
+      id: 3,
+      title: <DayExersice days={3}/>
+    }, {
+      id: 4,
+      title: <DayExersice days={1}/>
+    }
+  ]
 }
 const ProgramList = () => {
 
@@ -59,8 +55,7 @@ const ProgramList = () => {
       programName: 'program C',
       programStyle: 'Fitness',
       programDescription: 'bbbbbbbb'
-    }
-    , {
+    }, {
       id: 4,
       programName: 'program C',
       programStyle: 'Fitness',
@@ -96,7 +91,15 @@ const ProgramList = () => {
             display: 'flex',
             justifyContent: 'center'
           }}>
-            <ProgramModal create2={createProgram} array={programState} onClick={dataDay.cardData.push({id:arrayDay+1,title:<DayExersice days={1}/>})}/>
+            <ProgramModal
+              create2={createProgram}
+              array={programState}
+              onClick={dataDay
+              .cardData
+              .push({
+                id: arrayDay + 1,
+                title: <DayExersice days={1}/>
+              })}/>
           </div>
 
           {programState.map(list => <Segment>

@@ -10,8 +10,8 @@ import {
 } from 'semantic-ui-react'
 import PostForm from './PostForm';
 import dataExercise from './ProgramExercises'
-const DayExersice = ({days}) => {
 
+const DayExersice = ({days}) => {
   let arr = [];
   for (let i = 0; i < days; i++) {
     arr.push({id: i, day: i})
@@ -31,6 +31,7 @@ const DayExersice = ({days}) => {
 
   }
 
+  // console.log(day)
   return (
     <Container>
 
@@ -56,8 +57,6 @@ const DayExersice = ({days}) => {
                                 <Table.HeaderCell rowSpan='2'>Опции</Table.HeaderCell>
                               </Table.Row>
                             </Table.Header>
-                            {/* {console.log(dataExercise)} */}
-                            {/* {console.log(dataExercise[list.day])} */}
                             {dataExercise[list.day]
                               ? dataExercise[list.day].map(e => <Table.Body>
                                 <Table.Row>
@@ -74,6 +73,7 @@ const DayExersice = ({days}) => {
 
                         </Grid.Column>
                       </Grid>
+                      <PostForm thisCurrent={list.day}/>
 
                     </Grid.Column>
                   </Grid.Row>
@@ -81,9 +81,7 @@ const DayExersice = ({days}) => {
                     style={{
                     display: 'flex',
                     justifyContent: 'center'
-                  }}>
-                    {/* <PostForm/> */}
-                  </div>
+                  }}></div>
                 </Segment>
 
               </Grid.Column>)}

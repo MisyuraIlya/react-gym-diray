@@ -1,6 +1,6 @@
 //Global
 import React, {useState} from 'react';
-import {Grid,Segment,Container,Button} from 'semantic-ui-react'
+import {Grid, Segment, Container, Button} from 'semantic-ui-react'
 //Local
 import PostForm from './PostForm';
 import ExersiceList from './ExersiceList';
@@ -8,32 +8,83 @@ import ExersiceList from './ExersiceList';
 const SplitProgram = () => {
   const [exercisesA,
     setExercisesA] = useState([
-    {id: 1, name: "A", sets: "4", reps: "12-6"},
-    {id: 2,name: "B",sets: "4",reps: "12-6"}, 
-    {id: 3,name: "C",sets: "4", reps: "12-6"}
+    {
+      id: 1,
+      name: "A",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 2,
+      name: "B",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 3,
+      name: "C",
+      sets: "4",
+      reps: "12-6"
+    }
   ])
 
   const [exercisesB,
     setExercisesB] = useState([
-    {id: 1, name: "D", sets: "4", reps: "12-6"},
-    {id: 2,name: "E",sets: "4",reps: "12-6"}, 
-    {id: 3,name: "F",sets: "4", reps: "12-6"}
+    {
+      id: 1,
+      name: "D",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 2,
+      name: "E",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 3,
+      name: "F",
+      sets: "4",
+      reps: "12-6"
+    }
   ])
 
   const [exercisesC,
     setExercisesC] = useState([
-    {id: 1, name: "G", sets: "4", reps: "12-6"},
-    {id: 2,name: "H",sets: "4",reps: "12-6"}, 
-    {id: 3,name: "K",sets: "4", reps: "12-6"}
+    {
+      id: 1,
+      name: "G",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 2,
+      name: "H",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 3,
+      name: "K",
+      sets: "4",
+      reps: "12-6"
+    }
   ])
 
   const [exercisesD,
     setExercisesD] = useState([
-    {id: 1, name: "L", sets: "4", reps: "12-6"},
-    {id: 2,name: "M",sets: "4",reps: "12-6"}, 
-    {id: 3,name: "Y",sets: "4", reps: "12-6"}
+    {
+      id: 1,
+      name: "L",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 2,
+      name: "M",
+      sets: "4",
+      reps: "12-6"
+    }, {
+      id: 3,
+      name: "Y",
+      sets: "4",
+      reps: "12-6"
+    }
   ])
-
 
   const createExerciseA = (newExercise) => {
     setExercisesA([
@@ -62,14 +113,13 @@ const SplitProgram = () => {
     ])
   }
 
-
   const removeExercise = (exercise) => {
     setExercisesA(exercisesA.filter(e => e.id !== exercise.id))
   }
   return (
     <div >
       <Container>
-      <Button content="add new day" positive/>
+        <Button content="add new day" positive/>
 
         <Segment>
           <Container>
@@ -84,7 +134,7 @@ const SplitProgram = () => {
                       display: 'flex',
                       justifyContent: 'center'
                     }}>
-                      <PostForm  create={createExerciseA}/>
+                      <PostForm create={createExerciseA}/>
                     </div>
                   </Segment>
 
